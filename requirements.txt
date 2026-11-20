@@ -1,0 +1,13 @@
+# src/ 实际 import 的第三方依赖（2026-09-19 用 AST 扫全量核对过）。
+# 注意：实盘走的是官方 SDK，PyPI 包名是 polymarket-client，import 名是 polymarket。
+# 之前清单里写的 py-clob-client / py-clob-client-v2 在 src/ 里根本没用到，
+# 而真正需要的 polymarket-client 和 httpx 反而漏了 —— 照旧清单装出来的 venv 跑不起来。
+aiohttp>=3.9
+python-dotenv>=1.0
+polymarket-client>=0.9
+httpx>=0.28
+eth-account>=0.13
+numpy>=1.26
+scipy>=1.13
+# zoneinfo 需要时区库：Linux 用系统 tzdata，Windows/精简镜像是它兜底
+tzdata

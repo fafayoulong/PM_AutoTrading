@@ -1,0 +1,18 @@
+[Unit]
+Description=Soccer data-source race sampler (ESPN vs Polymarket)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pmbot
+WorkingDirectory=/opt/pmbot
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/pmbot/.venv/bin/python tools/soccer_latency_sampler.py --interval 5
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/pmbot/logs/soccer_sampler.out.log
+StandardError=append:/opt/pmbot/logs/soccer_sampler.err.log
+
+[Install]
+WantedBy=multi-user.target

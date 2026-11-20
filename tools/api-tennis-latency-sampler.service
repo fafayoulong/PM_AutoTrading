@@ -1,0 +1,19 @@
+[Unit]
+Description=API-Tennis point stream vs Polymarket price latency sampler
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pmbot
+Group=pmbot
+WorkingDirectory=/opt/pmbot
+EnvironmentFile=/opt/pmbot/.api-tennis.env
+ExecStart=/opt/pmbot/.venv/bin/python tools/api_tennis_latency_sampler.py
+Restart=always
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+﻿[Unit]
+Description=MLB situation ledger (ESPN situation x Polymarket book, read-only)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pmbot
+WorkingDirectory=/opt/pmbot
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/pmbot/.venv/bin/python tools/mlb_situation_ledger.py --interval 15
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/pmbot/logs/mlb_situation_ledger.out.log
+StandardError=append:/opt/pmbot/logs/mlb_situation_ledger.err.log
+
+[Install]
+WantedBy=multi-user.target

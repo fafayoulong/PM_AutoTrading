@@ -1,0 +1,17 @@
+# 锁定版本（2026-09-19 本地实测环境，Python 3.14）
+# 用途：迁移到 VPS 时按这套装，保证和本地一致；新版本要升级时先在这里改再验证。
+#
+# 装法（VPS）：
+#   python3 -m venv .venv && ./.venv/bin/pip install -r requirements-lock.txt
+#
+# 说明：下面这些版本都已在 VPS（Ubuntu 26.04 / Python 3.14.4）上用
+# `pip install --dry-run` 验证过可解析，且与本地一致。
+polymarket-client==0.9.0
+httpx==0.28.1
+aiohttp==3.14.3
+python-dotenv==1.2.2
+eth-account==0.13.7
+numpy==2.4.6
+scipy==1.17.1
+tzdata==2026.2
+websockets==15.0.1
